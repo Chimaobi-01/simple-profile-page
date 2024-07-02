@@ -2,16 +2,112 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js/" defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Simple Profile Page</title>
-
 </head>
 
 <body>
-    <h1>hello world</h1>
+    <header>
+        <nav>
+            <a href="http://hng.tech/learn" data-testid="hngLink">
+                HNG courses
+            </a>
+            <a href="https://keyword.dog/" data-testid="hngLink">
+                AI Powered SEO Optimization
+            </a>
+            <a href="https://scrapeanyweb.site/" data-testid="hngLink">
+                Scrape website tool
+            </a>
+        </nav>
+    </header>
+
+
+    <div class="container">
+
+
+        <div class="top_content">
+
+            <div class="content">
+                <div class="time">
+                    <span data-testid="currentTimeUTC"></span>
+                    <span data-testid="currentDay"></span>
+                </div>
+                <h1 data-testid="slackDisplayName">
+                    Chimaobi Chinaka
+                </h1>
+                <span data-testid="slackEmail">chimaobi01@gmail.com</span>
+            </div>
+
+            <div class="image">
+                <img data-testid="slackProfilePicture" src="./images/desktop-pic.png" alt="profile picture" />
+            </div>
+        </div>
+
+        <div class="goals">
+            <h4>My goals for the next 2 years</h4>
+            <ul>
+                <li>
+                    Deep Dive into Advanced Topics:
+                    <ul>
+                        <li>Learn about state management (e.g., Redux, Vuex).</li>
+                        <li>Understand the principles of performance optimization.</li>
+                    </ul>
+                </li>
+                <li>
+                    Backend Basics:
+                    <ul>
+                        <li>
+                            Gain basic knowledge of backend technologies (Node.js, Express) to understand full-stack development.
+                        </li>
+                        <li>
+                            Learn to work with APIs and databases (REST, GraphQL, SQL, NoSQL).
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                     Advanced Tooling and Workflow:
+                    <ul>
+                        <li>
+                            Get comfortable with modern development tools (Webpack, Babel).
+                        </li>
+                        <li>
+                            Explore and use CSS preprocessors (Sass, Less).
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Accessibility and SEO:
+                    <ul>
+                        <li>
+                            Ensure your projects are accessible to all users.
+                        </li>
+                        <li>
+                            Implement SEO best practices.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Career Development:
+                    <ul>
+                        <li>
+                            Start applying for frontend developer roles or internships.
+                        </li>
+                        <li>
+                            Seek mentorship or peer support to continue growing your skills.
+                        </li>
+                        <li>
+                            Keep up with industry trends and new technologies.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
