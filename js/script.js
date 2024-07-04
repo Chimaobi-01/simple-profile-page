@@ -1,18 +1,51 @@
-console.log('hello')
+
+const nodes = document.querySelectorAll(`
+    [data-testid='currentDay'], 
+    [data-testid='currentTimeUTC'],
+    .am-pm, 
+    .menu,
+    .copyCurrentTimeUTC,
+    .copy-am-pm
+    `)
+
+const [
+    currentDay, 
+    currentUTCTime, 
+    anteMeridiem,
+    menu,
+    copyTime,
+    copyAM
+] = nodes
 
 
-const allElements = document.querySelectorAll(" [data-testid='currentDay'], [data-testid='currentTimeUTC']")
+
+// Make all links open in new tab
 const links = document.querySelectorAll('a')
 links.forEach(link => {
     link.setAttribute('target', '_blank')
 })
 
-const [currentDayOfTheWeek, currentUTCTime] = allElements
-/*********
- * currentDayOfTheWeek
-**********/
 
-const getCurrentDayOfTheWeek = () => {
+ // Update day of the week
+getCurrentDayOfTheWeek()
+
+// Update the time immediately
+getCurrentUTCTime()
+
+ // Update the time every second
+setInterval(() => getCurrentUTCTime(),1)
+
+// toogle menu on click
+menu.addEventListener('click', toggleMenu)
+
+
+
+
+
+
+
+
+function getCurrentDayOfTheWeek() {
     const day = new Date().getDay()
     const daysOfTheWeek = [
         'Sunday',
@@ -23,15 +56,12 @@ const getCurrentDayOfTheWeek = () => {
         'Friday',
         'Saturday'
     ]
-    daysOfTheWeek.map((e,index) => day === index ? currentDayOfTheWeek.innerHTML = e: null
+    daysOfTheWeek.map((e,index) => day === index ? currentDay.textContent = e: null
     )
 }
-/****************************************
- * currentUTCTime
-*****************************************/
 
 
-const getCurrentUTCTime = () => {
+function getCurrentUTCTime() {
     const date = new Date()
     const hour = date.getUTCHours() + 1
     const minutes = date.getUTCMinutes()
@@ -39,24 +69,14 @@ const getCurrentUTCTime = () => {
     const milliseconds = date.getUTCMilliseconds()
     const am = hour < 12 ? 'AM' : 'PM'
     
-    currentUTCTime.innerHTML = `${hour < 10? `0${hour}`: hour}:${minutes < 10? `0${minutes}`: minutes}:${seconds < 10? `0${seconds}`: seconds}:${milliseconds} ${am}`
+    currentUTCTime.textContent = `${hour < 10? `0${hour}`: hour}:${minutes < 10? `0${minutes}`: minutes}:${seconds < 10? `0${seconds}`: seconds}:${milliseconds}`
+    currentUTCTime.setAttribute('datetime', date.toUTCString())
+
+    anteMeridiem.textContent = am
+    copyTime.textContent = currentUTCTime.textContent
+    copyAM.textContent = anteMeridiem.textContent
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/****************************************
- * calling Functions 
-*****************************************/
-
-getCurrentDayOfTheWeek()
-setInterval(() => getCurrentUTCTime(),1)
+function toggleMenu() {
+    menu.classList.toggle('active')
+}
